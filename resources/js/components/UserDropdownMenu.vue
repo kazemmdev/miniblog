@@ -1,7 +1,7 @@
 <template>
     <div class="relative">
         <button @click="show=!show" class="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-400">
-           <avatar :fullname="userName" size="40" />
+           <avatar :fullname="userName" :size="40" />
         </button>
         <dropdown-menu :show="show" @closed="show=false">
             <a href="#" class="block px-4 py-2 text-sm text-gray-700">Your Profile</a>

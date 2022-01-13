@@ -6,6 +6,9 @@ import "./bootstrap"
 import "./components/index"
 import "./filters"
 
+import CKEditor from '@ckeditor/ckeditor5-vue2';
+Vue.use( CKEditor );
+
 window.Vue = Vue;
 
 const app = new Vue({

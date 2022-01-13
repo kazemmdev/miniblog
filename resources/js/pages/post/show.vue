@@ -6,7 +6,7 @@
                 By {{ post.user.name }}&nbsp; - {{ post.created_at | timeago }}
             </div>
             <h1 class="text-5xl font-bold mb-5">{{ post.title }}</h1>
-            <p class="text-gray-700 whitespace-pre-line mb-8">{{ post.body }}</p>
+            <div class="text-gray-700 whitespace-pre-line mb-8" v-html="post.body"></div>
             <div class="flex flex-wrap mb-5">
                 <div class="text-sm text-white bg-gray-400 rounded-full px-3 py-1 m-1" v-for="tag in post.tags" :key="tag.id">
                     {{ tag.name }}
@@ -14,7 +14,7 @@
             </div>
             <div class="flex">
                 <div class="mr-6">
-                    <avatar :fullname="post.user.name" />
+                    <avatar :fullname="post.user.name"/>
                 </div>
                 <div class="flex flex-col justify-center">
                     <div class="text-xl text-gray-600">Written By {{ post.user.name }}</div>
@@ -28,16 +28,30 @@
 
                 </div>
             </div>
+            <div class="flex flex-wrap mt-10" v-if="isLoggedIn">
+                <router-link :to="{name:'edit-post', slug: post.title}" class="rounded px-4 py-2 text-sm bg-blue-500 font-bold text-white outline-none focus:outline-none hover:opacity-75 disabled:opacity-25">
+                    Edit
+                </router-link>
+                <div @click="destroy" class="rounded px-4 py-2 mx-5 text-sm bg-red-500 font-bold outline-none focus:outline-none hover:opacity-75 text-white disabled:opacity-25 cursor-pointer">
+                    delete
+                </div>
+            </div>
         </div>
     </div>
 </template>
 
 <script>
 import Avatar from 'vue-avatar-component'
+import {mapState} from "vuex";
 
 export default {
     name: "post",
     components: {Avatar},
+    computed:{
+    ...mapState({
+        isLoggedIn: 'isLoggedIn',
+    })
+    },
     data() {
         return {
             post: null
@@ -51,11 +65,12 @@ export default {
             await axios.get('/posts/' + this.$route.params.slug).then(response => {
                 this.post = response.data.data
             })
+        },
+        async destroy() {
+            await axios.delete('/posts/' + this.post.id).then(() => {
+                this.$router.push({name: 'home'})
+            })
         }
     }
 }
 </script>
-
-<style scoped>
-
-</style>

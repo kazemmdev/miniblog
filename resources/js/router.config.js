@@ -8,6 +8,7 @@ import login from "./pages/login"
 import register from "./pages/register"
 import showPost from "./pages/post/show"
 import createPost from "./pages/post/create"
+import editPost from "./pages/post/edit"
 import category from "./pages/category"
 
 const routes = [
@@ -17,6 +18,7 @@ const routes = [
     {path: '/category/:slug', name: 'category', component: category},
 
     {path: '/post/:slug', name: 'show-post', component: showPost},
+    {path: '/post/:slug/edit', name: 'edit-post', component: editPost},
     {path: '/new-post', name: 'new-post', component: createPost},
 ];
 

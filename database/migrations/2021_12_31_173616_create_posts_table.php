@@ -20,8 +20,8 @@ class CreatePostsTable extends Migration
             $table->string('subtitle');
             $table->string('slug');
             $table->text('body');
-            $table->foreignId('user_id')->constrained();
-            $table->foreignId('category_id')->constrained();
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('category_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
         });
     }
 

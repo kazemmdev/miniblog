@@ -30,7 +30,7 @@ export default {
             type: String,
             default: 'text-sm text-gray-500 mt-1'
         },
-        enterable:{
+        enterable: {
             type: Boolean,
             default: true
         },
@@ -62,6 +62,7 @@ export default {
     },
     mounted() {
         this.$refs.textInput.style.minHeight = `${this.$refs.textInput.clientHeight * this.row}px`
+        this.$refs.textInput.textContent = this.input.substr(0, this.max)
     },
     methods: {
         onchanging(e) {
@@ -69,7 +70,7 @@ export default {
                 e.preventDefault();
             }
 
-            this.input = this.$refs.textInput.textContent
+            this.input = this.$refs.textInput.textContent.substr(0, this.max)
 
             setTimeout(() => {
                 this.characterCount = this.$refs.textInput.textContent.length
