@@ -14,7 +14,7 @@
             </div>
             <div class="flex">
                 <div class="mr-6">
-                    <img :src="post.user.avatar" alt="writer avatar" class="w-16 h-16 rounded-full">
+                    <avatar :fullname="post.user.name" />
                 </div>
                 <div class="flex flex-col justify-center">
                     <div class="text-xl text-gray-600">Written By {{ post.user.name }}</div>
@@ -33,8 +33,11 @@
 </template>
 
 <script>
+import Avatar from 'vue-avatar-component'
+
 export default {
     name: "post",
+    components: {Avatar},
     data() {
         return {
             post: null

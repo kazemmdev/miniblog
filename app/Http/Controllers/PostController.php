@@ -11,7 +11,7 @@ class PostController extends Controller
 {
     public function index()
     {
-        return $this->success(Post::with(['user', 'category'])->get());
+        return $this->success(Post::with(['user', 'category'])->latest()->get());
     }
 
     public function show($slug)

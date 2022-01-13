@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Factories;
+    namespace Database\Factories;
 
 use App\Models\Category;
 use App\Models\User;

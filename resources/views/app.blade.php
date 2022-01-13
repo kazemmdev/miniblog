@@ -6,7 +6,6 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name', 'mini-blog') }}</title>
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
-    <link href="https://cdn.quilljs.com/1.0.0/quill.snow.css" rel="stylesheet" />
 
     <script src="{{ mix('js/app.js') }}" defer></script>
 </head>

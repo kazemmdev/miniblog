@@ -4,7 +4,7 @@ export function errorsHandler(error) {
         throw new AuthError("Unauthenticated");
     }
 
-    return error.response.data?.errors;
+    return error.response.data?.errors ?? error.response.data?.message ?? '';
 }
 
 export class AuthError extends Error {
